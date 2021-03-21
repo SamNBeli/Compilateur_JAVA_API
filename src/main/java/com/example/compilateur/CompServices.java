@@ -16,7 +16,8 @@ public class CompServices {
     public static String status;
     public static String exceptions;
     private static List<SnippetEvent> events;
-public void lire1(){
+
+    public void lire1(){
 
 }
     static JShell js = JShell.create();

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<input type="text" placeholder="Type something..." id="myInput">
+<button type="button" onclick="loadDoc()">Request data</button>
+
+<p id="demo"></p>
+<p id="test">
+
+
+    <script>
+var data ="int x=5;";
+
+function loadDoc() {
+var input=(data.trim());
+ //input=JSON.stringify(data);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+
+var inputVal = document.getElementById("myInput").value;
+          document.getElementById("test").innerHTML = inputVal;
+
+  xhttp.open("POST", "http://localhost:8080/comp?number="+inputVal, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+
+
+
+  //console.log(xhttp.responseText);
+  xhttp.send(JSON.stringify());
+
+
+            // Selecting the input element and get its value
+
+            // Displaying the value
+            //console.log("input value:"+inputVal);
+           // var obj = JSON.parse('{"name":"John"}');
+           // console.log( obj.name === "John" );
+
+}
+</script>
+
+</body>
+</html>
