@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html >
 <body>
 
 <h2>The XMLHttpRequest Object</h2>
-<input type="text" placeholder="Type something..." id="myInput">
-<button type="button" onclick="loadDoc()">Request data</button>
 
 <p id="demo"></p>
 <p id="test">
 
+<form>
+    <div style=" top:0px; display:inline-block;">
+        <fieldset style="width:35px">
+            <legend>REQUETES</legend>
+            <p><textarea class="scrollbars" cols="30" rows="15" placeholder="Type your request here..." id="myInput"></textarea></p>
+            <button type="button" onclick="loadDoc()">Request data</button>
+        </fieldset>
+    </div>
+    <div style=" top:0px; display:inline-block;">
+        <fieldset style="width:35px">
+            <b></b> <legend>ERREURS DE SYNTAXE</legend>
+            <p><textarea class="crollbars" cols="30" rows="16" ></textarea></p>
+        </fieldset>
+    </div >
+    <fieldset style="width:80px">
+        <legend>ERREURS RUNTIME EXCEPTIONS</legend>
+        <p><textarea class="noscrollbars" cols="69" rows="5"></textarea></p>
 
-    <script>
+    </fieldset>
+
+</form>
+
+
+
+<script>
 var data ="int x=5;";
 
 function loadDoc() {
@@ -32,7 +53,7 @@ var inputVal = document.getElementById("myInput").value;
 
 
   //console.log(xhttp.responseText);
-  xhttp.send(JSON.stringify());
+  xhttp.send();
 
 
             // Selecting the input element and get its value
