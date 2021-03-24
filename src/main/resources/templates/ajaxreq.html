@@ -11,27 +11,29 @@
     <div style=" top:0px; display:inline-block;">
         <fieldset style="width:35px">
             <legend>REQUETES</legend>
-            <p><textarea class="scrollbars" cols="29" rows="3" placeholder="Type your request here..." id="myInput"></textarea></p>
+            <p><textarea id="myInput" class="scrollbars" cols="32" rows="3" placeholder="Type your request here..." id="myInput"></textarea></p>
 
             <button type="button" onclick="loadDoc()">Request data</button>
 
             <fieldset style="width:80px">
                 <legend> RESULTATS</legend>
-                <p><textarea class="noscrollbars" cols="29" rows="5"></textarea></p>
+                <p><textarea id="result" class="noscrollbars" cols="29" rows="5" readonly>
 
+                </textarea></p>
             </fieldset>
+
         </fieldset>
 
     </div>
     <div style=" top:0px; display:inline-block;">
         <fieldset style="width:35px">
             <b></b> <legend>ERREURS DE SYNTAXE</legend>
-            <p><textarea class="crollbars" cols="30" rows="15" ></textarea></p>
+            <p><textarea id="erSyn" class="crollbars" cols="30" rows="15" ></textarea></p>
         </fieldset>
     </div >
     <fieldset style="width:80px">
         <legend> ERREURS RUNTIME </legend>
-        <p><textarea class="noscrollbars" cols="72" rows="5"></textarea></p>
+        <p><textarea id="erRun" class="noscrollbars" cols="72" rows="5"></textarea></p>
 
     </fieldset>
 
@@ -49,6 +51,8 @@ var input=(data.trim());
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
+     document.getElementById("result").innerHTML = this.responseText;
+
     }
   };
 
