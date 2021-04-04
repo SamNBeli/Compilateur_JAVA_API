@@ -1,15 +1,19 @@
 package com.example.compilateur;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+@CrossOrigin("*")
 @RestController
 public class CompController {
     // http://localhost:8080/comp?number=code
-    @GetMapping("/comp")
-    public Comp comp(@RequestParam(value = "number")String v1){
-        CompServices.lire(v1);
+    @PostMapping("/comp")
+    public Comp comp(@RequestBody String code){
+        CompServices.lire(code);
     return new Comp(String.format(CompServices.status),String.format(CompServices.result), String.format(CompServices.exceptions) );
+    }
+
+    @GetMapping("/reset")
+    public Comp comp(){
+        CompServices.redemarrer();
+        return new Comp(String.format(CompServices.status),String.format(CompServices.result), String.format(CompServices.exceptions) );
     }
 }

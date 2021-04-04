@@ -7,6 +7,7 @@ import jdk.jshell.SnippetEvent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 
@@ -16,11 +17,17 @@ public class CompServices {
     public static String status;
     public static String exceptions;
     private static List<SnippetEvent> events;
-public void lire1(){
 
-}
+
     static JShell js = JShell.create();
 
+    public static void redemarrer(){
+        result = "aucun resultat";
+        status = "aucun status";
+        exceptions = "aucune exception";
+        System.out.println("redemarre est la!");
+      //  js.drop(events);
+    }
     public static void lire(String code) {
 
          result = "aucun resultat";
@@ -30,6 +37,8 @@ public void lire1(){
             String input = code;
 
             events = js.eval(input);
+            Snippet s = js.eval(input).get(0).snippet();
+        js.diagnostics(s).forEach(d ->exceptions = d.getMessage(Locale.getDefault()));
             for (SnippetEvent e : events) {
 
 
@@ -55,8 +64,10 @@ public void lire1(){
                         exceptions = "\n" + e.exception();
                     }
 
+
                     if (e.value() != null) {
                         result = e.value();
+                        System.out.println(e.value());
                     }
                     System.out.flush();
                 }
