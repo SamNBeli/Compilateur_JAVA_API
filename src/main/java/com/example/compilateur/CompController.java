@@ -18,10 +18,15 @@ public class CompController{
 
     @PostMapping("/comp")
     public Comp comp(@RequestBody String code, String id){
-        System.out.println("le Id est:"+id);
-        //CompServices.creeJsh(id);
-        CompServices.lire(code, id);
-        CompServices.sessTimeOut(id);
+        System.out.println("le Code est:"+code);
+        if(CompServices.idenf.containsKey(id)) {
+            CompServices.lire(code, id);
+            CompServices.sessTimeOut(id);
+        }else{
+            CompServices.creeJsh(id);
+            CompServices.lire(code, id);
+            CompServices.sessTimeOut(id);
+        }
     return new Comp(String.format(CompServices.status),String.format(CompServices.result), String.format(CompServices.exceptions) );
     }
 
